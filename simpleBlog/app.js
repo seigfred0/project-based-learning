@@ -13,6 +13,10 @@ const PORT = 5000 || process.env.PORT;
 mongoose.connect('mongodb://localhost:27017/blogSite');
 
 
+// middleware for search
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
+
 
 app.use(express.static('public'));
 

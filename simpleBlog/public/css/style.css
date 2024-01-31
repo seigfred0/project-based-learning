@@ -284,6 +284,10 @@ article-ul li:not(:last-child) {
     right: 0;
 }
 
+.searchBtn {
+    cursor: pointer;
+}
+
 .searchBar.open {
     transform: translateY(0);
     transition: transform 0.1s;
