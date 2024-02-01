@@ -69,7 +69,6 @@ router.get('/post/:id', async (req, res) => {
 
 // Post - search term
 router.post('/search', async (req, res) => {
-    
     try {
         const locals = {
             title: "Search",
@@ -91,9 +90,6 @@ router.post('/search', async (req, res) => {
             data
         })
 
-        // const data = await Post.find();
-        // res.render('search', {locals, data});
-        
     } catch (error) {
         console.log(error);
     }
