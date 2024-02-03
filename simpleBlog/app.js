@@ -2,10 +2,13 @@ require('dotenv').config();
 
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
+const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const session = require('express-session');
+
+const { isActiveRoute } = require('./server/helpers/routeHelpers')
 
 // const connectDB = require('./server/config/db.js');
 
@@ -21,6 +24,9 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 app.use(cookieParser());
+app.use(methodOverride('_method'))
+
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -38,6 +44,7 @@ app.use(expressLayout);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
+app.locals.isActiveRoute = isActiveRoute;
 
 // Routes
 app.use('/', require('./server/routes/main'));
